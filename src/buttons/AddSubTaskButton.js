@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import manageTasksContext from '../contexts/manageTasksContext';
+import { TasksContext } from '../contexts/TasksContext';
+import { ShowInputContext } from '../contexts/ShowInputContext';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -8,10 +9,12 @@ function AddSubTaskButton({ taskId }) {
     const [inputSubTask, setInputSubTask] = useState('');
     const [isInputFieldShown, setIsInputFieldShown] = useState(false);
    
-    const { taskArray, setTaskArray } = useContext(manageTasksContext);
+    const { taskArray, setTaskArray } = useContext(TasksContext);
+    const { setIsInputActive } = useContext(ShowInputContext);
 
     const showInputField = function() {
         setIsInputFieldShown(true);
+        setIsInputActive(true);
     };
 
     const updateInputSubTask = function(e) {
@@ -37,27 +40,29 @@ function AddSubTaskButton({ taskId }) {
 
     return ( 
         <div>
+        <span >
             <button
              aria-label='add sub-task '
              onClick={showInputField}>
                 <FontAwesomeIcon icon={faPlus} />
-                {isInputFieldShown && 
+            </button>
+            {isInputFieldShown && 
                 <input 
                 className='input-subtask'
                 type='text' 
-                placeholder='Add Sub-Task'
+                placeholder='Add Sub-Task and Press Enter'
                 onChange={updateInputSubTask}
                 onKeyPress={e => {
                      if (e.key === 'Enter') {
                          e.preventDefault();
                          addSubTask(taskId);
                          setIsInputFieldShown(false);
+                         setIsInputActive(false)
                      }
                  }}
                  />}
-            </button>
-        </div>
-        
+        </span>
+        </div> 
      );
 }
 

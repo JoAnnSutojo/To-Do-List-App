@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import manageTasksContext from '../contexts/manageTasksContext';
+import { TasksContext } from '../contexts/TasksContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 function DeleteSubTaskButton({ taskId, subTaskId }) {
-    const { taskArray, setTaskArray } = useContext(manageTasksContext);
+    const { taskArray, setTaskArray } = useContext(TasksContext);
 
     const deleteSubTask = function(taskId, subTaskId) {
     // Find the index of the targeted Main-Task

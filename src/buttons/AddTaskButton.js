@@ -1,11 +1,15 @@
 import React, { useState, useContext } from 'react';
-import manageTasksContext from '../contexts/manageTasksContext';
+import { TasksContext } from '../contexts/TasksContext';
+import { ShowInputContext } from '../contexts/ShowInputContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function AddTaskButton() {
+   const [inputTask, setInputTask] = useState('');
     const [isInputFieldShown, setIsInputFieldShown] = useState(false);
-    const { taskArray, setTaskArray, inputTask, setInputTask, setIsInputActive } = useContext(manageTasksContext);
+
+    const { taskArray, setTaskArray } = useContext(TasksContext);
+    const {  setIsInputActive } = useContext(ShowInputContext)
 
     const showInputField = function() {
       setIsInputFieldShown(true);
@@ -33,7 +37,8 @@ function AddTaskButton() {
            <input
              className='input-task'
              type='text' 
-             placeholder='Add Task'
+             placeholder='Add Task and Press Enter'
+             autoFocus='autofocus'
              value={inputTask} 
              onChange={updateInputTask}
              onKeyPress={e => {

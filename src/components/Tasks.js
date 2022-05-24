@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import manageTasksContext from '../contexts/manageTasksContext';
+import React, { useContext } from 'react';
+import { TasksContext } from '../contexts/TasksContext';
+import { ShowInputContext } from '../contexts/ShowInputContext';
 import AddSubTaskButton from '../buttons/AddSubTaskButton';
 import DeleteTaskButton from '../buttons/DeleteTaskButton';
 import DeleteSubTaskButton from '../buttons/DeleteSubTaskButton';
 import AddTaskButton from '../buttons/AddTaskButton';
 
 function Tasks() {
-    const initialTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-   
-    const [taskArray, setTaskArray] = useState(initialTasks);
-    const [inputTask, setInputTask] = useState('');
-
-    const [isInputActive, setIsInputActive] = useState(false);
-
-    const value = { taskArray, setTaskArray, inputTask, setInputTask, isInputActive, setIsInputActive };  
+    const { taskArray, setTaskArray } = useContext(TasksContext);
+    const { isInputActive } = useContext(ShowInputContext);
 
     const updateTask = function(inputText, taskId) {
         const updatedTaskArray = taskArray.map((task) => {
@@ -41,14 +36,12 @@ function Tasks() {
          });
         setTaskArray(updatedTaskArray);
     };
-    
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(taskArray));
-    }, [taskArray]);
 
     return(
-        <manageTasksContext.Provider value={value}>
-            <div  style={{backgroundColor: isInputActive ? 'grey' : '', opacity: isInputActive ? '0.7' : ''}} />
+        <div>
+            {isInputActive && 
+            <div className='overlay' />
+            } 
             <div className='tasks-conta'>
                 <ul className='list-conta'>
 
@@ -62,10 +55,9 @@ function Tasks() {
                             value={task.taskName} 
                             onChange={(e) => updateTask(e.target.value, task.id)} 
                             />
-                           {/* <p>{t.taskName}</p> */}
                            <div className='task-menu'>
-                                <AddSubTaskButton taskId={task.id} />
-                                <DeleteTaskButton taskId={task.id}/>
+                                <AddSubTaskButton taskId={task.id} />    
+                                <DeleteTaskButton taskId={task.id}/>    
                            </div> 
                         </li>
                          
@@ -78,7 +70,6 @@ function Tasks() {
                                value={subTask.subTaskName} 
                                onChange={(e) => updateSubTask(e.target.value, task.id, subTask.id)} 
                                />
-                               {/* <p>{subTask.subTaskName}</p> */}
                                <div className='task-menu'>
                                   <div />
                                   <DeleteSubTaskButton taskId={task.id} subTaskId={subTask.subTaskId} />
@@ -90,7 +81,7 @@ function Tasks() {
                 </ul>
                 <AddTaskButton />
             </div> 
-        </manageTasksContext.Provider>
+        </div>    
     )
 }
 
