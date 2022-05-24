@@ -1,8 +1,6 @@
-.main-conta {
+.App {
   width: 100vw;
   min-height: 100vh;
-  /* background-color: black;
-  color: white; */
 } 
 
 /* HEADER */
@@ -11,25 +9,73 @@
   width: 100vw;
   height: 10%;
   padding: 1.5rem;
-  background-color: black;
-  color: white;
-
+  color: #fffefc;
+  /* text-shadow: #000 0px 0px 1px; */
+  position: relative;
 }
 
 h1 {
-  font-size: 2.6rem;
   font-family: 'Poppins', serif;
+  font-size: 2.5rem;
+ font-weight: 600;
   word-spacing: -5px;
 }
 
 .header-conta p {
   margin-top: 0.5rem;
-  letter-spacing: 0.05em;
+  /* letter-spacing: 0.05em; */
+  font-weight: 500;
 }
 
-/* .date {
-  font-weight: bold;
-} */
+.theme-dropdown {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.theme-dropdown label, .theme-dropdown select {
+  color: #fffefc;
+  font-family: 'Poppins', serif;
+}
+
+.theme-dropdown label {
+  font-size: 14px;
+}
+
+.theme-dropdown select {
+  width: 104px;
+  height: 1.5rem;
+  background-color: transparent;
+  border-top: 1px solid #fffefc;
+}
+
+.black {
+  background-color: black;
+}
+
+.tomato {
+  background-color: tomato;
+}
+
+.seagreen {
+  background-color: #2e8b57;
+}
+
+.mustard {
+  background-color: #e1ad01;
+}
+
+.tangerine {
+  background-color: #f28500;
+}
+
+.olympic {
+  background-color: #008ecc;
+}
+
 
 /* TASKS */
 
@@ -37,16 +83,12 @@ h1 {
   width: 100%;
   height: 100vh;
   position: absolute;
-  /* z-index: 0;  */
-  /* background:black; */
   background:rgba(0,0,0,0.8);
-  /* backdrop-filter: blur(50px); */
   opacity: 0.85;
 }
 
 .tasks-conta {
   width: 100vw;
-  /* height: 100vh; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -76,7 +118,6 @@ h1 {
 .sub-task {
   width: 95%;
   margin-left: auto;
-  /* margin-right: 0; */
 }
 
 .task-field, .sub-task-field {
@@ -132,7 +173,7 @@ h1 {
   left: 50%;
   margin-left: -35px;
   color: white;
-  background-color: black;
+  /* background-color: black; */
 }
 
 .add-task-btn:hover {

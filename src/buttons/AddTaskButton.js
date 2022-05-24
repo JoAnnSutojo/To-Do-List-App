@@ -1,15 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { TasksContext } from '../contexts/TasksContext';
 import { ShowInputContext } from '../contexts/ShowInputContext';
+import { ThemeContext } from '../contexts/ThemeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function AddTaskButton() {
-   const [inputTask, setInputTask] = useState('');
+    const [inputTask, setInputTask] = useState('');
     const [isInputFieldShown, setIsInputFieldShown] = useState(false);
 
     const { taskArray, setTaskArray } = useContext(TasksContext);
-    const {  setIsInputActive } = useContext(ShowInputContext)
+    const {  setIsInputActive } = useContext(ShowInputContext);
+    const { theme } = useContext(ThemeContext);
 
     const showInputField = function() {
       setIsInputFieldShown(true);
@@ -28,7 +30,7 @@ function AddTaskButton() {
     return ( 
       <div className='add-task-btn-conta'>
         <button
-         className='add-task-btn'
+         className={`add-task-btn ${theme}`}
          aria-label='add task'
          onClick={showInputField}>
             <FontAwesomeIcon  icon={faPlus} />

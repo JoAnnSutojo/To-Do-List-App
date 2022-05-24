@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Tasks from './components/Tasks';
 import { TasksProvider } from './contexts/TasksContext';
 import { ShowInputProvider } from './contexts/ShowInputContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import './App.css';
 
 function App() {
@@ -10,10 +11,12 @@ function App() {
   return (
    <TasksProvider>
      <ShowInputProvider>
-     <div className='main-conta'>
-        <Header />
-        <Tasks />
-      </div>
+       <ThemeProvider>
+          <div className='App'>
+             <Header />
+             <Tasks />
+          </div>
+       </ThemeProvider>
      </ShowInputProvider>
    </TasksProvider>
   );
