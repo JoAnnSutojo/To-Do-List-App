@@ -46,11 +46,13 @@ function AddSubTaskButton({ taskId }) {
              onClick={showInputField}>
                 <FontAwesomeIcon icon={faPlus} />
             </button>
-            {isInputFieldShown && 
+        </span>
+        {isInputFieldShown && 
                 <input 
                 className='input-subtask'
                 type='text' 
                 placeholder='Add Sub-Task and Press Enter'
+                autoFocus='autofocus'
                 onChange={updateInputSubTask}
                 onKeyPress={e => {
                      if (e.key === 'Enter') {
@@ -61,7 +63,6 @@ function AddSubTaskButton({ taskId }) {
                      }
                  }}
                  />}
-        </span>
         </div> 
      );
 }

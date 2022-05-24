@@ -50,6 +50,7 @@ function Tasks() {
                     <div>
                         <li key={task.id} className='task'>
                             <input 
+                            className='task-field'
                             type='text' 
                             id={task.id} 
                             value={task.taskName} 
@@ -65,6 +66,7 @@ function Tasks() {
                         {task.subTask.map((subTask) => 
                            <li key={subTask.subTaskId} className='sub-task'>
                                <input 
+                               className='sub-task-field'
                                type='text' 
                                id={subTask.id} 
                                value={subTask.subTaskName} 

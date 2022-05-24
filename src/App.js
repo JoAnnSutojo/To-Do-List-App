@@ -15,7 +15,6 @@ function App() {
         <Tasks />
       </div>
      </ShowInputProvider>
-     
    </TasksProvider>
   );
 }
