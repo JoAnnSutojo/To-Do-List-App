@@ -4,13 +4,14 @@ import { ShowInputContext } from '../contexts/ShowInputContext';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function AddTaskButton() {
     const [inputTask, setInputTask] = useState('');
     const [isInputFieldShown, setIsInputFieldShown] = useState(false);
 
     const { taskArray, setTaskArray } = useContext(TasksContext);
-    const {  setIsInputActive } = useContext(ShowInputContext);
+    const { setIsInputActive } = useContext(ShowInputContext);
     const { theme } = useContext(ThemeContext);
 
     const showInputField = function() {
@@ -19,12 +20,16 @@ function AddTaskButton() {
     };
 
     const updateInputTask = function(e) {
-      setInputTask(e.target.value);
+        setInputTask(e.target.value);
     };
 
     const addTask = function() {
-        setTaskArray([...taskArray, {id: Date.now(), taskName: inputTask, subTask: []}]);
-        setInputTask('');
+        if (inputTask.length < 1) {
+          alert('Input is empty. Please try again!');
+        } else {
+          setTaskArray([...taskArray, {id: Date.now(), taskName: inputTask, subTask: []}]);
+          setInputTask('');
+        }
       };
 
     return ( 

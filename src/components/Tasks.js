@@ -5,6 +5,8 @@ import AddSubTaskButton from '../buttons/AddSubTaskButton';
 import DeleteTaskButton from '../buttons/DeleteTaskButton';
 import DeleteSubTaskButton from '../buttons/DeleteSubTaskButton';
 import AddTaskButton from '../buttons/AddTaskButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function Tasks() {
     const { taskArray, setTaskArray } = useContext(TasksContext);
@@ -38,7 +40,7 @@ function Tasks() {
     };
 
     return(
-        <div>
+        <div className='main-tasks-conta'>
             {isInputActive && 
             <div className='overlay' />
             } 
@@ -47,7 +49,7 @@ function Tasks() {
 
                     {/* Task List */}
                     {taskArray.map((task) => 
-                    <div>
+                    <div className='task-conta'>
                         <li key={task.id} className='task'>
                             <input 
                             className='task-field'
@@ -65,23 +67,26 @@ function Tasks() {
                         {/* Sub-Task List */}
                         {task.subTask.map((subTask) => 
                            <li key={subTask.subTaskId} className='sub-task'>
-                               <input 
-                               className='sub-task-field'
-                               type='text' 
-                               id={subTask.id} 
-                               value={subTask.subTaskName} 
-                               onChange={(e) => updateSubTask(e.target.value, task.id, subTask.id)} 
-                               />
-                               <div className='task-menu'>
-                                  <div />
-                                  <DeleteSubTaskButton taskId={task.id} subTaskId={subTask.subTaskId} />
+                               <div className='sub-task-list'>
+                                    <FontAwesomeIcon  icon={faAngleRight} />
+                                     <input 
+                                     className='sub-task-field'
+                                     type='text' 
+                                     id={subTask.id} 
+                                     value={subTask.subTaskName} 
+                                     onChange={(e) => updateSubTask(e.target.value, task.id, subTask.id)} 
+                                     />
                                </div>
+                                <div className='task-menu'>
+                                    <div />
+                                    <DeleteSubTaskButton taskId={task.id} subTaskId={subTask.subTaskId} />
+                                </div>
                            </li>
                          )}
                     </div>  
                     )}
                 </ul>
-                <AddTaskButton />
+            <AddTaskButton />
             </div> 
         </div>    
     )

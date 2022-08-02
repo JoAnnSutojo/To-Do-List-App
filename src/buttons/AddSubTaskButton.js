@@ -22,7 +22,10 @@ function AddSubTaskButton({ taskId }) {
     };
 
     const addSubTask = function(taskId) {
-        // Find the index of the targeted Main-Task
+        if (inputSubTask.length < 1) {
+            alert('Input is empty. Please try again!');
+        } else {
+            // Find the index of the targeted Main-Task
         let targetIndex = taskArray.indexOf(taskArray.find(task=>task.id === taskId));
         // Copied the Main-Task object (in which we want to add further Sub-Tasks)
         let newMainTask = taskArray[ targetIndex];
@@ -36,6 +39,7 @@ function AddSubTaskButton({ taskId }) {
          });
         setTaskArray(updatedTaskArray);
         setInputSubTask('');
+        }  
     };
 
     return ( 
