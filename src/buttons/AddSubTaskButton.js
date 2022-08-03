@@ -13,7 +13,7 @@ function AddSubTaskButton({ taskId }) {
     const { isInputActive, setIsInputActive, isInputSubTaskFieldShown, setIsInputSubTaskFieldShown } = useContext(ShowInputContext);
 
     const showInputField = function() {
-         setIsInputFieldShown(true);
+        setIsInputSubTaskFieldShown(true);
          setIsInputActive(true);
       };
 
@@ -51,7 +51,7 @@ function AddSubTaskButton({ taskId }) {
                 <FontAwesomeIcon icon={faPlus} />
             </button>
         </span>
-        {isInputFieldShown && 
+        {isInputSubTaskFieldShown && 
                 <input 
                 className='input-subtask'
                 type='text' 
@@ -62,7 +62,7 @@ function AddSubTaskButton({ taskId }) {
                      if (e.key === 'Enter') {
                          e.preventDefault();
                          addSubTask(taskId);
-                         setIsInputFieldShown(false);
+                         setIsInputSubTaskFieldShown(false);
                          setIsInputActive(false)
                      }
                  }}

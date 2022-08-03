@@ -11,7 +11,7 @@ function AddTaskButton() {
     const [isInputFieldShown, setIsInputFieldShown] = useState(false);
 
     const { taskArray, setTaskArray } = useContext(TasksContext);
-    const { isInputActive ,setIsInputActive } = useContext(ShowInputContext);
+    const { isInputActive , setIsInputActive,  setIsInputSubTaskFieldShown } = useContext(ShowInputContext);
     const { theme } = useContext(ThemeContext);
 
     const showInputField = function() {
@@ -20,6 +20,7 @@ function AddTaskButton() {
         setIsInputActive(true);
       } else if (isInputActive) {
         setIsInputFieldShown(false);
+        setIsInputSubTaskFieldShown(false);
         setIsInputActive(false);
       }
     };
@@ -43,7 +44,7 @@ function AddTaskButton() {
          className={`add-task-btn ${theme}`}
          aria-label='add task'
          onClick={showInputField}>
-            {isInputFieldShown  ? 
+            {isInputActive ? 
               (<FontAwesomeIcon  icon={faXmark} />)
               : 
               (<FontAwesomeIcon  icon={faPlus} />)
