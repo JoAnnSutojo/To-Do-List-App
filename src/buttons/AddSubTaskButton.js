@@ -7,15 +7,15 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function AddSubTaskButton({ taskId }) {
     const [inputSubTask, setInputSubTask] = useState('');
-    const [isInputFieldShown, setIsInputFieldShown] = useState(false);
+    // const [isInputFieldShown, setIsInputFieldShown] = useState(false);
    
     const { taskArray, setTaskArray } = useContext(TasksContext);
-    const { setIsInputActive } = useContext(ShowInputContext);
+    const { isInputActive, setIsInputActive, isInputSubTaskFieldShown, setIsInputSubTaskFieldShown } = useContext(ShowInputContext);
 
     const showInputField = function() {
-        setIsInputFieldShown(true);
-        setIsInputActive(true);
-    };
+         setIsInputFieldShown(true);
+         setIsInputActive(true);
+      };
 
     const updateInputSubTask = function(e) {
         setInputSubTask(e.target.value);
@@ -25,7 +25,7 @@ function AddSubTaskButton({ taskId }) {
         if (inputSubTask.length < 1) {
             alert('Input is empty. Please try again!');
         } else {
-            // Find the index of the targeted Main-Task
+        // Find the index of the targeted Main-Task
         let targetIndex = taskArray.indexOf(taskArray.find(task=>task.id === taskId));
         // Copied the Main-Task object (in which we want to add further Sub-Tasks)
         let newMainTask = taskArray[ targetIndex];

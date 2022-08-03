@@ -95,7 +95,7 @@ h1 {
 
 .tasks-conta {
   width: 100vw;
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,7 +114,8 @@ h1 {
   box-shadow: 2px 2.5px 2.5px grey;
   margin-bottom: 5px;
   padding: 10px;
-  z-index: 0;
+  position: relative;
+  /* z-index: 0; */
 }
 
 .task, .sub-task {
@@ -122,6 +123,7 @@ h1 {
   justify-content: space-between;
   padding: 4px;
   /* margin-top:2.5px; */
+  z-index: 0;
 }
 
 .task {
@@ -194,6 +196,7 @@ h1 {
   left: 50%;
   margin-left: -35px;
   color: white;
+  z-index: 1;
 }
 
 .add-task-btn:hover {
@@ -206,34 +209,37 @@ h1 {
   transform: scale(1.25);
 }
 
-.close-icon {
-  display: none;
-}
-
 .input-task, .input-subtask {
-  width: 350px;
-  height: 60px;
+  /* width: 450px; */
+  width: 100%;
+  height: 100px;
   border-radius: 5px;
   padding: 10px;
   background-color: white;
   color: black;
-  z-index: 1;
+ 
 }
 
 .input-task {
   position: fixed;
   bottom: 15%;
-  left: 50%;
-  margin-left: -175px;
+  /* left: 50%; */
+  /* margin-left: -225px; */
+  z-index: 1;
 }
 
 /* ADDSUBTASKBUTTON */
 
 .input-subtask {
-  position: absolute; 
-  bottom: 53%;
-  right: 14%;
-  z-index: 1;
+  /* position: absolute; 
+  bottom: 0;
+  left: 0;
+  /* right: 14%; */
+  
+  position: fixed;
+  bottom: 15%;
+  right: 0;
+  z-index: 99;  
 }
 
 /* OTHERS */
