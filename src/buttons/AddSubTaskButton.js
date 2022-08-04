@@ -10,7 +10,7 @@ function AddSubTaskButton({ taskId }) {
     // const [isInputFieldShown, setIsInputFieldShown] = useState(false);
    
     const { taskArray, setTaskArray } = useContext(TasksContext);
-    const { isInputActive, setIsInputActive, isInputSubTaskFieldShown, setIsInputSubTaskFieldShown } = useContext(ShowInputContext);
+    const { setIsInputActive, isInputSubTaskFieldShown, setIsInputSubTaskFieldShown } = useContext(ShowInputContext);
 
     const showInputField = function() {
         setIsInputSubTaskFieldShown(true);
@@ -72,19 +72,3 @@ function AddSubTaskButton({ taskId }) {
 }
 
 export default AddSubTaskButton;
-
-
-
-
-        //// let Arr1 = [{id:1, names:["a","b"]},{id:1, names:["a","b"]} ]
-        //// let Arr2 = [...Arr1];
-
-
-        //// Arr2[1].names.push("c")
-
-        //// console.log(Arr1)
-
-        //// let Arr3 = [1,2,3]
-        //// let Arr4 = [...Arr3]
-        //// Arr4.push(4)
-        //// console.log(Arr3)
