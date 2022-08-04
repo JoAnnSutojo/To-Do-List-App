@@ -1,16 +1,23 @@
-.App {
+body {
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.App {
+  max-width: 768px;
   min-height: 100vh;
 } 
 
 /* HEADER */
 
 .header-conta {
-  width: 100vw;
+  max-width: 768px;
   height: 10%;
   padding: 1.5rem;
   color: #fffefc;
-  /* text-shadow: #000 0px 0px 1px; */
   position: relative;
 }
 
@@ -94,7 +101,7 @@ h1 {
 }
 
 .tasks-conta {
-  width: 100vw;
+  max-width: 768px;
   /* position: relative; */
   display: flex;
   flex-direction: column;
