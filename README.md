@@ -17,4 +17,4 @@ Stay organised by easily adding subtasks to the main tasks.
 
 ## Live Demo
 
-View the live demo 
+View the live demo [here](https://lambent-starburst-bfffbf.netlify.app)
