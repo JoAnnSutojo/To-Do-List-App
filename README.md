@@ -6,13 +6,13 @@ Designed for mobiles and tablets.
 
 ## Highlights
 
-1. Minimalist Design
+1. Minimalist Design <br />
 Clean lines and simplicty helps to stay focused.
 
-2. Subtasks
+2. Subtasks <br />
 Stay organised by easily adding subtasks to the main tasks.
 
-3. Themes
+3. Themes <br />
 5+ colors to match you mood.
 
 ## Live Demo
