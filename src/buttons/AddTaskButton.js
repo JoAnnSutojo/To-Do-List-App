@@ -20,8 +20,8 @@ function AddTaskButton() {
         setIsInputActive(true);
       } else if (isInputActive) {
         setIsInputFieldShown(false);
-        setIsInputSubTaskFieldShown(false);
         setIsInputActive(false);
+        setIsInputSubTaskFieldShown(false);
       }
     };
 

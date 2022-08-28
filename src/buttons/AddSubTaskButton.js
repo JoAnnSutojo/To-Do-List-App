@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { TasksContext } from '../contexts/TasksContext';
 import { ShowInputContext } from '../contexts/ShowInputContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,15 +7,23 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function AddSubTaskButton({ taskId }) {
     const [inputSubTask, setInputSubTask] = useState('');
-    // const [isInputFieldShown, setIsInputFieldShown] = useState(false);
+    const [isInputFieldShown, setIsInputFieldShown] = useState(false);
    
     const { taskArray, setTaskArray } = useContext(TasksContext);
     const { setIsInputActive, isInputSubTaskFieldShown, setIsInputSubTaskFieldShown } = useContext(ShowInputContext);
 
     const showInputField = function() {
-        setIsInputSubTaskFieldShown(true);
+         setIsInputFieldShown(true);
          setIsInputActive(true);
+         setIsInputSubTaskFieldShown(true);
       };
+
+    // To remove input sub-task field when user click the X button 
+    // (which is the add-task button - another component)
+    useEffect(() => {
+        if (!isInputSubTaskFieldShown) 
+            setIsInputFieldShown(false);
+    }, [isInputSubTaskFieldShown]);
 
     const updateInputSubTask = function(e) {
         setInputSubTask(e.target.value);
@@ -26,7 +34,8 @@ function AddSubTaskButton({ taskId }) {
             alert('Input is empty. Please try again!');
         } else {
         // Find the index of the targeted Main-Task
-        let targetIndex = taskArray.indexOf(taskArray.find(task=>task.id === taskId));
+        let targetIndex = taskArray.indexOf(taskArray.find(task => task.id === taskId));
+        console.log('the target index is ' + targetIndex);
         // Copied the Main-Task object (in which we want to add further Sub-Tasks)
         let newMainTask = taskArray[ targetIndex];
         // Pushing the new Sub-Tasks  into the targeted Main-Task that we copied in previous  line.
@@ -51,7 +60,7 @@ function AddSubTaskButton({ taskId }) {
                 <FontAwesomeIcon icon={faPlus} />
             </button>
         </span>
-        {isInputSubTaskFieldShown && 
+        {isInputFieldShown && 
                 <input 
                 className='input-subtask'
                 type='text' 
@@ -62,8 +71,9 @@ function AddSubTaskButton({ taskId }) {
                      if (e.key === 'Enter') {
                          e.preventDefault();
                          addSubTask(taskId);
+                         setIsInputFieldShown(false);
+                         setIsInputActive(false);
                          setIsInputSubTaskFieldShown(false);
-                         setIsInputActive(false)
                      }
                  }}
                  />}
