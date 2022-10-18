@@ -11,7 +11,7 @@ Clean lines and simplicty helps to stay focused.
 Stay organised by easily adding subtasks to the main tasks.
 
 3. Themes <br />
-5+ colors to match you mood.
+5+ colors to match your mood.
 
 ## Live Demo
 
