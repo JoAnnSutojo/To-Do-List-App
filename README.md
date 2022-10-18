@@ -2,8 +2,6 @@
 
 This is a simple To-Do List application, developed with React.
 
-Designed for mobiles and tablets.
-
 ## Highlights
 
 1. Minimalist Design <br />

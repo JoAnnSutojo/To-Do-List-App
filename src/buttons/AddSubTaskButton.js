@@ -35,11 +35,10 @@ function AddSubTaskButton({ taskId }) {
         } else {
         // Find the index of the targeted Main-Task
         let targetIndex = taskArray.indexOf(taskArray.find(task => task.id === taskId));
-        console.log('the target index is ' + targetIndex);
         // Copied the Main-Task object (in which we want to add further Sub-Tasks)
         let newMainTask = taskArray[ targetIndex];
         // Pushing the new Sub-Tasks  into the targeted Main-Task that we copied in previous  line.
-        newMainTask.subTask.push({subTaskId : uuidv4(), subTaskName: inputSubTask});
+        newMainTask.subTask.push({subTaskId: uuidv4(), subTaskName: inputSubTask});
         // Applying map method to make an updated copy of taskArray. In map method we create a new array from old array. The new returned array will always have the same number of elements as the previous array. Value of every element in the array depends on our return statement, what we are returning.
         // As per our case we just want to change the value of the targeted Main-Task (passed as id), so we are only updating the 'subTask' property of that element, while returning all others as they were before.
         let updatedTaskArray = taskArray.map((task) => {

@@ -13,6 +13,7 @@ function Tasks() {
     const { isInputActive } = useContext(ShowInputContext);
 
     const updateTask = function(inputText, taskId) {
+        console.log('inputText', inputText);
         const updatedTaskArray = taskArray.map((task) => {
             if (task.id === taskId) {
                 task.taskName = inputText;
@@ -20,20 +21,21 @@ function Tasks() {
             return task;
         })
         setTaskArray(updatedTaskArray);
+        console.log('updatedTaskArray', updatedTaskArray);
     };
 
     const updateSubTask = function(inputText, taskId, subTaskId) {
         // Find the index of the targeted Main-Task
-        let targetIndex = taskArray.indexOf(taskArray.find(item=>item.id === taskId));
+        let targetIndex = taskArray.indexOf(taskArray.find(item => item.id === taskId));
          // Copied the Main-Task object (in which we want to update subTaskName property of a Sub-Task)
         let newMainTask = taskArray[targetIndex];
         // Access the Sub-Task Array inside Main-Task
-        let targetSubTask = newMainTask.subTask.find((subTask) => subTask.id === subTaskId);
+        let targetSubTask = newMainTask.subTask.find((subTask) => subTask.subTaskId === subTaskId);
         // Update value subTaskName property with new input
         targetSubTask.subTaskName = inputText;
         // Mapping over taskArray in state to create a new array, in which an element was updated (updated Sub-Task name).
         let updatedTaskArray = taskArray.map((mainTask) => {
-            if (mainTask.id === taskId) mainTask={...newMainTask}
+            if (mainTask.id === taskId) mainTask = {...newMainTask}
             return mainTask
          });
         setTaskArray(updatedTaskArray);
@@ -74,7 +76,7 @@ function Tasks() {
                                      type='text' 
                                      id={subTask.id} 
                                      value={subTask.subTaskName} 
-                                     onChange={(e) => updateSubTask(e.target.value, task.id, subTask.id)} 
+                                     onChange={(e) => updateSubTask(e.target.value, task.id, subTask.subTaskId)} 
                                      />
                                </div>
                                 <div className='task-menu'>
