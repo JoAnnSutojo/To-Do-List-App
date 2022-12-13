@@ -13,7 +13,6 @@ function Tasks() {
     const { isInputActive } = useContext(ShowInputContext);
 
     const updateTask = function(inputText, taskId) {
-        console.log('inputText', inputText);
         const updatedTaskArray = taskArray.map((task) => {
             if (task.id === taskId) {
                 task.taskName = inputText;
@@ -21,7 +20,6 @@ function Tasks() {
             return task;
         })
         setTaskArray(updatedTaskArray);
-        console.log('updatedTaskArray', updatedTaskArray);
     };
 
     const updateSubTask = function(inputText, taskId, subTaskId) {
